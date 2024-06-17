@@ -1,16 +1,65 @@
-#‌ Sentence Reconstruction
-The purpose of this project is to take in input a sequence of words corresponding to a random permutation of a given English sentence and reconstruct the original sentence.
 
+
+# Sentence Reconstruction
+
+The purpose of this project is to take in input a sequence of words corresponding to a random permutation of a given English sentence and reconstruct the original sentence.
 The output can be either produced in a single shot or through an iterative (autoregressive) loop generating a single token at a time.
 
-
 CONSTRAINTS:
+
 * No pretrained model can be used.
 * The neural network models should have less the 20M parameters.
 * No postprocessing should be done (e.g. no beam search)
 * Any additional training data cannot be used.
 
 This script contains functions and configurations used for training and evaluating various transformer models on sequence data. The main focus of this analysis is to optimize model performance, efficiency, and accuracy by experimenting with different configurations such as the number of encoder and decoder layers, embedding dimension, attention heads, intermediate dimension, dense layers, and loss functions.
+
+## Examples
+
+Below are examples demonstrating the usage of the primary functions within this script:
+
+1. **Calculate Score**: You can calculate the similarity score between two sentences using the `score` function as shown in the example below:
+
+```python
+from difflib import SequenceMatcher
+
+# Define two sample sentences
+sentence1 = "This is a test sentence."
+sentence2 = "This is another test sentence."
+
+# Calculate and print the similarity score
+similarity_score = SequenceMatcher(None, sentence1, sentence2).ratio()
+print("Similarity Score:", similarity_score)
+```
+
+2. **Run Model on Scrambled Inputs**: To generate output sequences for scrambled input sequences using a trained model, you can use the `run_model_on_scrambled_inputs` function as follows:
+
+```python
+import numpy as np
+from tensorflow import keras
+
+# Assume a pre-trained model
+model = keras.models.Sequential()
+
+# Define input sequences
+input_sequences = np.array([[1, 2, 3, 4, 0], [5, 6, 7, 2, 0]])
+
+# Generate and print output sequences
+output_sequences = run_model_on_scrambled_inputs(model, input_sequences)
+print("Output Sequences:", output_sequences)
+```
+
+3. **Calculate Scores for Test Sequences**: To calculate scores for test sequences using a model or base input data, you can use the `calculate_score_for_test_sequences` function as shown in the example below:
+
+```python
+import collections
+
+# Calculate and print the base score for the test data without the model
+base_scores = calculate_score_for_test_sequences()
+
+# Calculate and print the score for the test data with the model
+model_scores = calculate_score_for_test_sequences(num_samples=4000, use_model=True)
+```
 
 ## Contents
 
