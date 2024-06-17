@@ -1,12 +1,13 @@
-The purpose of this project is to take in input a sequence of words corresponding to a random permutation of a given english sentence, and reconstruct the original sentence.
+#‌ Sentence Reconstruction
+The purpose of this project is to take in input a sequence of words corresponding to a random permutation of a given English sentence and reconstruct the original sentence.
 
-The output can be either produced in a single shot, or through an iterative (autoregressive) loop generating a single token at a time.
+The output can be either produced in a single shot or through an iterative (autoregressive) loop generating a single token at a time.
 
 
 CONSTRAINTS:
 * No pretrained model can be used.
 * The neural network models should have less the 20M parameters.
-* No postprocessing should be done (e.g. no beamsearch)
+* No postprocessing should be done (e.g. no beam search)
 * Any additional training data cannot be used.
 
 This script contains functions and configurations used for training and evaluating various transformer models on sequence data. The main focus of this analysis is to optimize model performance, efficiency, and accuracy by experimenting with different configurations such as the number of encoder and decoder layers, embedding dimension, attention heads, intermediate dimension, dense layers, and loss functions.
